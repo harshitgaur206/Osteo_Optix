@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  osteo-optix:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: osteo-optix
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    environment:
+      - ALLOWED_ORIGINS=*
+    # If you need to persist the SQLite database in the future,
+    # consider updating database.py to save the file in a dedicated /data folder
+    # and then mount a volume here like this:
+    # volumes:
+    #   - osteo_optix_data:/app/backend/data
+
+# volumes:
+#   osteo_optix_data:
