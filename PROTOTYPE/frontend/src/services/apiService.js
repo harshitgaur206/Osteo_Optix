@@ -1,9 +1,9 @@
 import { saveLocalScreening, getOfflineSyncQueue, clearSyncedFromQueue } from './offlineStorage';
 
 // Dynamic API Base URL detection
-const API_BASE_URL = window.location.origin && window.location.origin.includes("8000") 
-  ? window.location.origin 
-  : "http://127.0.0.1:8000";
+const API_BASE_URL = window.location.hostname === 'localhost' && window.location.port !== '8000'
+  ? "http://127.0.0.1:8000"
+  : window.location.origin;
 
 const getAuthHeaders = () => {
   const headers = { 'Content-Type': 'application/json' };

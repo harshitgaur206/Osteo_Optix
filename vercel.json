@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "PROTOTYPE/backend/app/main.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "PROTOTYPE/frontend/package.json",
+      "use": "@vercel/vite"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/PROTOTYPE/backend/app/main.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/PROTOTYPE/frontend/dist/$1"
+    }
+  ]
+}
